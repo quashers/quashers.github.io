@@ -1,27 +1,209 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Welcome to Quashers and Hello World</title>
-    <style>
-      body { font-family: sans-serif; max-width: 700px; margin: 2rem auto; line-height: 1.5; padding: 0 1rem; }
-      h1 { color: #333; }
-      a.btn {
-        display: inline-block;
-        margin-top: 1rem;
-        padding: 0.5rem 1rem;
-        background: #007acc;
-        color: white;
-        text-decoration: none;
-        border-radius: 5px;
-      }
-      a.btn:hover { background: #005fa3; }
-    </style>
-  </head>
-  <body>
-    <h1>Welcome to Quashers and Hello World!</h1>
-    <p>A simple, fun wooden game built for everyone.</p>
-    <a href="#" class="btn">Learn More</a>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quashers — Handcrafted Wooden Game</title>
+  <meta name="description" content="Quashers is a simple, durable, ridiculously fun wooden game. Buy direct with secure checkout." />
+  <link rel="icon" href="/favicon.ico" />
+  <style>
+    :root {
+      --max: 1024px;
+      --pad: 1rem;
+    }
+    /* Base */
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; line-height: 1.55; color: #1b1b1b; background: #fff; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
+
+    /* Header */
+    header { border-bottom: 1px solid #eee; position: sticky; top: 0; background: #fff; z-index: 10; }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .brand { font-weight: 700; letter-spacing: .2px; }
+    .nav a { padding: .5rem .75rem; border-radius: 8px; }
+    .nav a:hover { background: #f4f4f4; }
+
+    /* Hero */
+    .hero { display: grid; gap: 2rem; grid-template-columns: 1.1fr 1fr; align-items: center; padding: 2.5rem 0; }
+    .hero h1 { font-size: clamp(2rem, 5vw, 3rem); margin: .25rem 0 .5rem; }
+    .tag { font-size: 1.125rem; color: #444; margin-bottom: 1rem; }
+    .price { font-size: 1.25rem; margin: .5rem 0 1rem; }
+    .btn {
+      display: inline-block; padding: .9rem 1.15rem; border: 1px solid #111; border-radius: 10px;
+      background: #111; color: #fff; font-weight: 600; transition: transform .03s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn.secondary { background: transparent; color: #111; margin-left: .5rem; }
+
+    .hero-media { border: 1px solid #eee; border-radius: 16px; overflow: hidden; background: #fafafa; }
+    .meta { display: flex; gap: .75rem; align-items: center; margin-top: .75rem; font-size: .95rem; color: #555; flex-wrap: wrap; }
+    .badge { display: inline-flex; align-items: center; gap: .4rem; padding: .35rem .6rem; border: 1px solid #e6e6e6; border-radius: 999px; background: #fff; }
+
+    /* Sections */
+    section { padding: 2.5rem 0; border-top: 1px solid #f0f0f0; }
+    h2 { margin: 0 0 1rem; font-size: clamp(1.5rem, 3.5vw, 2rem); }
+    .cols-3 { display: grid; gap: 1.25rem; grid-template-columns: repeat(3, 1fr); }
+    .card { border: 1px solid #eee; border-radius: 14px; padding: 1rem; background: #fff; }
+    .muted { color: #555; }
+
+    /* Alt purchase row */
+    .alt { display: flex; gap: .75rem; align-items: center; flex-wrap: wrap; margin-top: .5rem; }
+    .alt a { padding: .45rem .7rem; border: 1px solid #ddd; border-radius: 8px; background: #fafafa; }
+    .alt a:hover { background: #f2f2f2; }
+
+    /* FAQ */
+    .faq { max-width: 800px; }
+    .faq-item { border: 1px solid #eee; border-radius: 12px; margin-bottom: .75rem; overflow: hidden; }
+    .faq-q { display: flex; justify-content: space-between; padding: .9rem 1rem; font-weight: 600; cursor: pointer; background: #fafafa; }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height .2s ease; background: #fff; }
+    .faq-a-inner { padding: 0 1rem 1rem; color: #444; }
+
+    /* Footer */
+    footer { border-top: 1px solid #eee; padding: 1.25rem 0 3rem; color: #666; font-size: .95rem; }
+
+    /* Responsive */
+    @media (max-width: 880px) {
+      .hero { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="wrap nav">
+      <div class="brand">Quashers</div>
+      <nav class="links">
+        <a href="#features">Features</a>
+        <a href="#how">How to Play</a>
+        <a href="#buy">Buy</a>
+        <a href="#shipping">Shipping</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <div class="wrap hero">
+    <div>
+      <p class="tag">Simple. Durable. Ridiculously fun.</p>
+      <h1>The handcrafted wooden game everyone can play</h1>
+      <p class="price"><strong>$15</strong> + shipping</p>
+
+      <!-- Replace data-buy with your Stripe Payment Link -->
+      <div>
+        <a class="btn" href="#" data-buy>Buy Now</a>
+        <a class="btn secondary" href="#how">See how it’s played</a>
+      </div>
+
+      <div class="meta">
+        <span class="badge">🔒 Secure checkout (Stripe)</span>
+        <span class="badge">🚚 Ships from the USA</span>
+        <span class="badge">↩️ 30-day returns</span>
+      </div>
+
+      <!-- Alternate purchase outlets -->
+      <div class="alt">
+        <span class="muted">Also available on:</span>
+        <a href="https://www.etsy.com" target="_blank" rel="noopener">Etsy</a>
+        <a href="https://www.amazon.com" target="_blank" rel="noopener">Amazon</a>
+      </div>
+    </div>
+
+    <!-- Swap image for a short demo video if you have one -->
+    <div class="hero-media">
+      <!-- Example image path: /assets/img/hero.jpg -->
+      <img src="/assets/img/hero.jpg" alt="Quashers wooden game on a table" />
+    </div>
+  </div>
+
+  <!-- Features -->
+  <section id="features">
+    <div class="wrap">
+      <h2>Why you’ll love Quashers</h2>
+      <div class="cols-3">
+        <div class="card"><strong>Fast to learn</strong><br><span class="muted">Play in minutes—master over time.</span></div>
+        <div class="card"><strong>Built to last</strong><br><span class="muted">Solid wood components; family-proof.</span></div>
+        <div class="card"><strong>All ages</strong><br><span class="muted">Fun at parties, game night, or camp.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How to play -->
+  <section id="how">
+    <div class="wrap">
+      <h2>How to play</h2>
+      <p class="muted">Quick summary of rules here. Add a 30–60s demo video to boost conversions.</p>
+      <!-- Optional video (replace with your clip) -->
+      <!-- <video controls width="100%" poster="/assets/img/video-poster.jpg">
+        <source src="/assets/video/demo.mp4" type="video/mp4" />
+      </video> -->
+    </div>
+  </section>
+
+  <!-- Buy (dedicated anchor spot) -->
+  <section id="buy">
+    <div class="wrap">
+      <h2>Buy directly</h2>
+      <p class="muted">Checkout is handled by Stripe. We never store your card details.</p>
+      <a class="btn" href="#" data-buy>Buy Now — $15</a>
+      <div class="alt">
+        <span class="muted">Prefer a marketplace?</span>
+        <a href="https://www.etsy.com" target="_blank" rel="noopener">Etsy</a>
+        <a href="https://www.amazon.com" target="_blank" rel="noopener">Amazon</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shipping & Refund -->
+  <section id="shipping">
+    <div class="wrap cols-3">
+      <div class="card">
+        <h3>Shipping</h3>
+        <p class="muted">Orders ship in 2–3 business days via USPS. Tracking provided by email.</p>
+      </div>
+      <div class="card">
+        <h3>Returns</h3>
+        <p class="muted">30-day money-back guarantee. If you’re not happy, send it back—no hassle.</p>
+      </div>
+      <div class="card">
+        <h3>Support</h3>
+        <p class="muted">Questions? Email <a href="mailto:hello@quashersgame.com">hello@quashersgame.com</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap faq">
+      <h2>FAQ</h2>
+
+      <div class="faq-item">
+        <div class="faq-q">Is checkout secure?<span>➕</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Yes—Stripe handles all payments with industry-standard security. We never see or store your card info.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">Do you ship internationally?<span>➕</span></div>
+        <div class="faq-a"><div class="faq-a-inner">Starting with U.S. only; international shipping coming soon.</div></div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">What’s the return policy?<span>➕</span></div>
+        <div class="faq-a"><div class="faq-a-inner">30-day money-back guarantee—no questions asked. Email us and we’ll take care of you.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div>© <span id="year"></span> Quashers. All rights reserved.</div>
+      <div class="muted">Built with HTML/CSS/JS. Hosted on GitHub Pages. Paid securely via Stripe.</div>
+    </div>
+  </footer>
+
+  <!-- Hook up behavior -->
+  <script src="/assets/js/index.js" defer></script>
+</body>
 </html>
