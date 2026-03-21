@@ -57,3 +57,44 @@ body {
 footer {
   background-color: var(--dark-blue);
 }
+
+/* Washer Animation */
+#washer-animation-container {
+  position: relative;
+  height: 100px;
+  width: 100%;
+  overflow: hidden;
+}
+
+#washer {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: #c0c0c0; /* Silver */
+  border-radius: 50%;
+  border: 5px solid #a9a9a9; /* Darker silver */
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  bottom: 0;
+  left: -50px; /* Start off-screen */
+  animation: bounce 5s linear infinite;
+}
+
+@keyframes bounce {
+  0% {
+    left: -50px;
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-50px) rotate(90deg);
+  }
+  50% {
+    transform: translateY(0) rotate(180deg);
+  }
+  75% {
+    transform: translateY(-50px) rotate(270deg);
+  }
+  100% {
+    left: 100%;
+    transform: translateY(0) rotate(360deg);
+  }
+}
