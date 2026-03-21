@@ -1,0 +1,59 @@
+/* Custom CSS */
+
+/* Color Scheme */
+:root {
+  --dark-blue: #0a2342;
+  --light-gray: #f8f9fa;
+  --white: #ffffff;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navigation */
+.bg-dark-blue {
+  background-color: var(--dark-blue) !important;
+}
+
+/* Hero Section */
+.hero {
+  background-color: var(--dark-blue);
+  padding: 100px 0;
+}
+
+/* Sections */
+#rules {
+  background-color: var(--white);
+}
+
+#social {
+  background-color: var(--light-gray);
+}
+
+/* Social Icons */
+.social-icon {
+  margin: 0 15px;
+  color: var(--dark-blue);
+  transition: color 0.3s;
+}
+
+.social-icon:hover {
+  color: #0056b3; /* A slightly lighter blue */
+}
+
+/* Order Button */
+#stripe-checkout {
+  background-color: var(--dark-blue);
+  border-color: var(--dark-blue);
+}
+
+#stripe-checkout:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+/* Footer */
+footer {
+  background-color: var(--dark-blue);
+}
